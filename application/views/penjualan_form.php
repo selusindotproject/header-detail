@@ -97,6 +97,7 @@
                     <td> <input type="text" name="qty[]" value="0"> </td>
                     <td> <input type="text" name="harga[]" value="0"> </td>
                     <td> <input type="text" name="sub_total[]" value="0"> </td>
+                    <td> <button type="button" name="button" onclick="hapus_detail(`+jml_baris+`)">Hapus</button> </td>
                 </tr>
                 `
             );
