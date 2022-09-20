@@ -6,7 +6,8 @@
     </head>
     <body>
         <h1>List Data Penjualan</h1>
-        <p><a href="<?= site_url('penjualan/tambah') ?>">Tambah Data</a></p>
+
+        <p> <button type="button" name="button" onclick="javascript: window.location.href = '<?= site_url('penjualan/tambah') ?>'">Tambah Data</button> </p>
         <table border="1">
             <tr>
                 <td>No.</td>
