@@ -48,10 +48,10 @@
                                                 <?php } ?>
                                             </select>
                                         </td>
-                                        <td> <input type="text" name="qty[]" value="0"> </td>
-                                        <td> <input type="text" name="harga[]" value="0"> </td>
-                                        <td> <input type="text" name="sub_total[]" value="0"> </td>
-                                        <td> <button type="button" name="button" onclick="hapus_detail(0)">Hapus</button> </td>
+                                        <td><input type="text" name="qty[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
+                                        <td><input type="text" name="harga[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
+                                        <td><input type="text" name="sub_total[]" value="0" readonly></td>
+                                        <td>&nbsp;</td>
                                     </tr>
                                     <script type="text/javascript">
                                         ++jml_baris;
@@ -66,7 +66,7 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td colspan="3"><a href="#" onclick="tambah_detail()">Tambah Barang</a></td>
+                    <td colspan="3"> <button type="button" name="button" onclick="tambah_detail()">Tambah Barang</button> </td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
@@ -74,7 +74,7 @@
                 <tr>
                     <td>Total</td>
                     <td>:</td>
-                    <td><input type="text" name="tgl" value="<?= $total ?>"></td>
+                    <td><input type="text" name="tgl" value="<?= $total ?>" readonly></td>
                 </tr>
             </table>
         </form>
