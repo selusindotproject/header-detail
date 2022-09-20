@@ -42,15 +42,15 @@
                                 <?php if ($this->uri->segment(2) == 'tambah') { ?>
                                     <tr id="tr_0">
                                         <td>
-                                            <select class="" name="kode_brg[]">
+                                            <select id="kode_brg0" class="" name="kode_brg[]">
                                                 <?php foreach($data_barang as $row) { ?>
                                                 <option value="<?= $row->kode_brg ?>"><?= $row->nama_brg ?></option>
                                                 <?php } ?>
                                             </select>
                                         </td>
-                                        <td><input type="text" name="qty[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
-                                        <td><input type="text" name="harga[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
-                                        <td><input type="text" name="sub_total[]" value="0" readonly></td>
+                                        <td><input id="qty0" type="text" name="qty[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
+                                        <td><input id="harga0" type="text" name="harga[]" value="0" onblur="calculate(0)" onkeyup="calculate(0)"></td>
+                                        <td><input class="sub_total" id="sub_total0" type="text" name="sub_total[]" value="0" readonly disabled></td>
                                         <td>&nbsp;</td>
                                     </tr>
                                     <script type="text/javascript">
@@ -74,7 +74,7 @@
                 <tr>
                     <td>Total</td>
                     <td>:</td>
-                    <td><input type="text" name="tgl" value="<?= $total ?>" readonly></td>
+                    <td><input id="total" type="text" name="tgl" value="<?= $total ?>" readonly disabled></td>
                 </tr>
             </table>
         </form>
@@ -88,16 +88,16 @@
                 `
                 <tr id="tr_`+jml_baris+`">
                     <td>
-                        <select class="" name="kode_brg[]">
+                        <select id="kode_brg`+jml_baris+`" class="" name="kode_brg[]">
                             <?php foreach($data_barang as $row) { ?>
                             <option value="<?= $row->kode_brg ?>"><?= $row->nama_brg ?></option>
                             <?php } ?>
                         </select>
                     </td>
-                    <td> <input type="text" name="qty[]" value="0"> </td>
-                    <td> <input type="text" name="harga[]" value="0"> </td>
-                    <td> <input type="text" name="sub_total[]" value="0"> </td>
-                    <td> <button type="button" name="button" onclick="hapus_detail(`+jml_baris+`)">Hapus</button> </td>
+                    <td><input id="qty`+jml_baris+`" type="text" name="qty[]" value="0" onblur="calculate(`+jml_baris+`)" onkeyup="calculate(`+jml_baris+`)"> </td>
+                    <td><input id="harga`+jml_baris+`" type="text" name="harga[]" value="0" onblur="calculate(`+jml_baris+`)" onkeyup="calculate(`+jml_baris+`)"> </td>
+                    <td><input class="sub_total" id="sub_total`+jml_baris+`" type="text" name="sub_total[]" value="0" readonly disabled> </td>
+                    <td><button type="button" name="button" onclick="hapus_detail(`+jml_baris+`)">Hapus</button> </td>
                 </tr>
                 `
             );
@@ -112,6 +112,24 @@
         {
             $('#tr_' + baris).remove();
             --jml_baris;
+            calculate();
+        }
+
+        function calculate(index = 0)
+        {
+            var qty = document.getElementById('qty'+index);
+            var harga = document.getElementById('harga'+index);
+            var sub_total = document.getElementById('sub_total'+index);
+            var total = document.getElementById('total');
+
+            sub_total.value = parseFloat(qty.value) * parseFloat(harga.value);
+
+            var m_total = 0;
+            $('.sub_total').each(function() {
+                m_total += parseFloat($(this).val());
+            });
+            total.value = m_total;
+
         }
 
         </script>
