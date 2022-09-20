@@ -11,7 +11,7 @@
         var no;
         </script>
         <h1>Input Data Penjualan</h1>
-        <form class="" action="<?= site_url('penjualan/tambah_action') ?>" method="post">
+        <form class="" action="<?= site_url('penjualan/create_action') ?>" method="post">
             <table>
                 <tr>
                     <td>No. Nota</td>
@@ -74,12 +74,13 @@
                 <tr>
                     <td>Total</td>
                     <td>:</td>
-                    <td><input id="total" type="text" name="tgl" value="<?= $total ?>" readonly disabled></td>
+                    <td><input id="total" type="text" name="total" value="<?= $total ?>" readonly ></td>
                 </tr>
             </table>
-        </form>
 
-        <p> <button type="button" name="button">Simpan</button> <button type="button" name="button" onclick="kembali()">Kembali</button> </p>
+            <p> <button type="submit" name="button">Simpan</button> <button type="button" name="button" onclick="kembali()">Kembali</button> </p>
+
+        </form>
 
         <script type="text/javascript">
 

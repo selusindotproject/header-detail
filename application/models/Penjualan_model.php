@@ -22,4 +22,9 @@ class Penjualan_model extends CI_Model
         return $this->db->query($q)->result();
     }
 
+    function insert($data)
+    {
+        $this->db->insert('tb_header', $data);
+    }
+
 }
