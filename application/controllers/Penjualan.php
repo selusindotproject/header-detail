@@ -68,4 +68,17 @@ class Penjualan extends CI_Controller
         redirect(site_url());
     }
 
+    public function update($id)
+    {
+        $row = $this->Penjualan_model->get_data_by_id($id);
+        $data_barang = $this->Barang_model->get_data();
+        $data = array(
+            'no_nota' => $row->no_nota,
+            'tgl' => $row->tgl,
+            'total' => $row->total,
+            'data_barang' => $data_barang,
+        );
+        $this->load->view('penjualan_form', $data);
+    }
+
 }

@@ -27,4 +27,19 @@ class Penjualan_model extends CI_Model
         $this->db->insert('tb_header', $data);
     }
 
+    function get_data_by_id($id)
+    {
+        $q = "
+            select
+                *
+            from
+                tb_header
+            where
+                id = ".$id."
+            order by
+                no_nota
+        ";
+        return $this->db->query($q)->row();
+    }
+
 }

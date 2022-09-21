@@ -23,7 +23,7 @@
                     <td><?= $row->no_nota ?></td>
                     <td><?= $row->tgl ?></td>
                     <td><?= $row->total ?></td>
-                    <td> <a href="<?= site_url('penjualan/edit/'.$row->id)?>">Edit</a> </td>
+                    <td><button type="button" name="button" onclick="javascript: window.location.href = '<?= site_url('penjualan/edit/'.$row->id) ?>'">Edit</button></td>
                 </tr>
             <?php } ?>
         </table>
